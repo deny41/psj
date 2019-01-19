@@ -73,19 +73,19 @@
                         </table> 
                         <table width="100%">
                             <tr style="height: 50px;text-align: center;">
+                                <td><button class="btn btn-primary btn-sm subscribe"><i class="fas fa-bell"></i> Subscribe</button></td>
+                              {{--   <td><button class="btn btn-primary btn-sm"><i class="fas fa-bell"></i> Follow</button></td>
                                 <td><button class="btn btn-primary btn-sm"><i class="fas fa-bell"></i> Follow</button></td>
-                                <td><button class="btn btn-primary btn-sm"><i class="fas fa-bell"></i> Follow</button></td>
-                                <td><button class="btn btn-primary btn-sm"><i class="fas fa-bell"></i> Follow</button></td>
-                                <td><button class="btn btn-primary btn-sm"><i class="fas fa-bell"></i> Follow</button></td>
+                                <td><button class="btn btn-primary btn-sm"><i class="fas fa-bell"></i> Follow</button></td> --}}
                             </tr>
                         </table>     
-                        <table width="100%">
+                       {{--  <table width="100%">
                             <tr style="height: 50px;text-align: center;">
                                 <td><button class="btn btn-primary btn-sm"><i class="fas fa-bell"></i> Follow</button></td>
                                 <td><button class="btn btn-primary btn-sm"><i class="fas fa-bell"></i> Follow</button></td>
                                 <td><button class="btn btn-primary btn-sm"><i class="fas fa-bell"></i> Follow</button></td>
                             </tr>
-                        </table>        
+                        </table>  --}}       
                     </div>
                     <div class="col-md-3">
                         <div class="featured-author">
@@ -203,8 +203,8 @@
                         <div id="menu2" class="tab-pane fade" style="margin-top: 10px">
                             <div class="col-md-4 col-md-offset-4">
                                 @if(Auth::user() != null)
-                                        <input type="hidden" name="" value="{{ Auth::user()->id }}" class="dr_rated_by">
-                                    @if (Auth::user()->id != $book->dn_created_by)
+                                        <input type="hidden" name="" value="{{ Auth::user()->m_id }}" class="dr_rated_by">
+                                    @if (Auth::user()->m_id != $book->dn_created_by)
                                         <div class="comments">
                                             <h4 class="title">{{-- 3 Responses  --}}</h4>
                                             <div class="comment-list">
@@ -303,7 +303,7 @@
                                                             @endif
                                                         </figure>
                                                         <div class="details">
-                                                            <h5 class="name">{{ $gg->name }}</h5>
+                                                            <h5 class="name">{{ $gg->m_username }}</h5>
                                                             <div class="time">{{ date('d F Y',strtotime($gg->drdt_created_at)) }} <small>{{ date('h:i:s A',strtotime($gg->drdt_created_at)) }}</small></div>
                                                             <div class="description">
                                                                 {{ $gg->drdt_message }}
@@ -435,6 +435,26 @@
         $.ajax({
             type: "get",
             url:'{{ route('novel_rate_reply') }}',
+            data: '&id='+('{{ $book->dn_id }}')+'&message='+message+'&drdt_reply_by='+dr_rated_by+'&drdt_ref_rate_id='+argument,
+            processData: false,
+            contentType: false,
+          success:function(data){
+            $('.drop_here').html(data);
+          },error:function(){
+            iziToast.error({
+                icon: 'fa fa-info',
+                position:'topRight',
+                title: 'Error!',
+                message: 'Try Again Later!',
+            });
+          }
+        });
+    }
+
+    function reply_data(argument) {
+        $.ajax({
+            type: "get",
+            url:'{{ route('subscribe_novel') }}',
             data: '&id='+('{{ $book->dn_id }}')+'&message='+message+'&drdt_reply_by='+dr_rated_by+'&drdt_ref_rate_id='+argument,
             processData: false,
             contentType: false,

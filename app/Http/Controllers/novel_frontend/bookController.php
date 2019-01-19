@@ -20,8 +20,10 @@ class bookController extends Controller
         // return json_encode($code->dn_id);
         $novel = DB::table('d_novel')
                     ->where('dn_created_by','=',$code->dn_created_by)
-                    ->where('dn_title','!=',$title)
+                    ->where('dn_title','=',$title)
+                    ->where('dn_status',1)
                     ->get();
+
         $book = DB::table('d_novel')
                     ->join('d_mem','m_id','=','dn_created_by')
                     ->where('dn_id',$code->dn_id)
