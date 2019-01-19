@@ -8,22 +8,22 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{ url('/') }}">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="{{ asset('assets/images/logo-icon.png') }}" alt="homepage" class="dark-logo" />
+                            {{-- <img src="{{ asset('assets_backend/images/logo-icon.png') }}" alt="homepage" class="dark-logo" /> --}}
                             <!-- Light Logo icon -->
-                            <img src="{{ asset('assets/images/logo-light-icon.png') }}" alt="homepage" class="light-logo" />
+                            {{-- <img src="{{ asset('assets_backend/images/logo-light-icon.png') }}" alt="homepage" class="light-logo" /> --}}
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="{{ asset('assets/images/logo-text.png') }}" alt="homepage" class="dark-logo" />
+                            <img src="{{ asset('assets_backend/images/Favicon.jpg') }}" alt="homepage" class="dark-logo" />
                             <!-- Light Logo text -->
-                            <img src="{{ asset('assets/images/logo-light-text.png') }}" class="light-logo" alt="homepage" />
+                            <img src="{{ asset('assets_backend/images/Logo_Putih.png') }}" style="width: 130px;margin-left: 0%;" class="light-logo" alt="homepage" />
                         </span>
                     </a>
                     <!-- ============================================================== -->
@@ -66,17 +66,17 @@
                                             <div class="carousel-inner" role="listbox">
                                                 <div class="carousel-item active">
                                                     <div class="container p-0">
-                                                        <img class="d-block img-fluid" src="{{ asset('assets/images/big/img1.jpg') }}" alt="First slide">
+                                                        <img class="d-block img-fluid" src="{{ asset('assets_backend/images/big/img1.jpg') }}" alt="First slide">
                                                     </div>
                                                 </div>
                                                 <div class="carousel-item">
                                                     <div class="container p-0">
-                                                        <img class="d-block img-fluid" src="{{ asset('assets/images/big/img2.jpg') }}" alt="Second slide">
+                                                        <img class="d-block img-fluid" src="{{ asset('assets_backend/images/big/img2.jpg') }}" alt="Second slide">
                                                     </div>
                                                 </div>
                                                 <div class="carousel-item">
                                                     <div class="container p-0">
-                                                        <img class="d-block img-fluid" src="{{ asset('assets/images/big/img3.jpg') }}" alt="Third slide">
+                                                        <img class="d-block img-fluid" src="{{ asset('assets_backend/images/big/img3.jpg') }}" alt="Third slide">
                                                     </div>
                                                 </div>
                                             </div>
@@ -288,7 +288,7 @@
                                             <!-- Message -->
                                             <a href="javascript:void(0)" class="message-item">
                                                 <span class="user-img">
-                                                    <img src="{{ asset('assets/images/users/1.jpg') }}" alt="user" class="rounded-circle">
+                                                    <img src="{{ asset('assets_backend/images/users/1.jpg') }}" alt="user" class="rounded-circle">
                                                     <span class="profile-status online pull-right"></span>
                                                 </span>
                                                 <div class="mail-contnet">
@@ -300,7 +300,7 @@
                                             <!-- Message -->
                                             <a href="javascript:void(0)" class="message-item">
                                                 <span class="user-img">
-                                                    <img src="{{ asset('assets/images/users/2.jpg') }}" alt="user" class="rounded-circle">
+                                                    <img src="{{ asset('assets_backend/images/users/2.jpg') }}" alt="user" class="rounded-circle">
                                                     <span class="profile-status busy pull-right"></span>
                                                 </span>
                                                 <div class="mail-contnet">
@@ -312,7 +312,7 @@
                                             <!-- Message -->
                                             <a href="javascript:void(0)" class="message-item">
                                                 <span class="user-img">
-                                                    <img src="{{ asset('assets/images/users/3.jpg') }}" alt="user" class="rounded-circle">
+                                                    <img src="{{ asset('assets_backend/images/users/3.jpg') }}" alt="user" class="rounded-circle">
                                                     <span class="profile-status away pull-right"></span>
                                                 </span>
                                                 <div class="mail-contnet">
@@ -324,7 +324,7 @@
                                             <!-- Message -->
                                             <a href="javascript:void(0)" class="message-item">
                                                 <span class="user-img">
-                                                    <img src="{{ asset('assets/images/users/4.jpg') }}" alt="user" class="rounded-circle">
+                                                    <img src="{{ asset('assets_backend/images/users/4.jpg') }}" alt="user" class="rounded-circle">
                                                     <span class="profile-status offline pull-right"></span>
                                                 </span>
                                                 <div class="mail-contnet">
@@ -394,7 +394,12 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                                <img src="{{ asset('assets/images/users/1.jpg') }}" alt="user" class="rounded-circle" width="31">
+                                @if (Auth::user()->u_image == null)
+                                    <img src="{{ asset('assets_backend/images/no_image.png') }}?{{ time() }}" class="rounded-circle" width="31" />
+                                @else
+                                    <img src="{{ asset('assets_backend/images/user/5.jpg') }}?{{ time() }}" class="rounded-circle" width="31" />
+                                @endif
+                                {{-- <img src="{{ asset('assets_backend/images/users/1.jpg') }}" alt="user" class="" width="31"> --}}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
                                 <span class="with-arrow">
@@ -402,14 +407,19 @@
                                 </span>
                                 <div class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
                                     <div class="">
-                                        <img src="{{ asset('assets/images/users/1.jpg') }}" alt="user" class="img-circle" width="60">
+                                        @if (Auth::user()->u_image == null)
+                                            <img src="{{ asset('assets_backend/images/no_image.png') }}?{{ time() }}" class="img-circle" width="60" />
+                                        @else
+                                            <img src="{{ asset('assets_backend/images/user/5.jpg') }}?{{ time() }}" class="img-circle" width="60" />
+                                        @endif
+                                        {{-- <img src="{{ asset('assets_backend/images/users/1.jpg') }}" alt="user" class="" width="60"> --}}
                                     </div>
                                     <div class="m-l-10">
-                                        <h4 class="m-b-0">Steave Jobs</h4>
+                                        <h4 class="m-b-0">-</h4>
                                         <p class=" m-b-0">varun@gmail.com</p>
                                     </div>
                                 </div>
-                                <a class="dropdown-item" href="javascript:void(0)">
+                                <a class="dropdown-item" href="{{ route('profile_backend',['id'=>Auth::user()->m_id]) }}">
                                     <i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
                                 <a class="dropdown-item" href="javascript:void(0)">
                                     <i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>

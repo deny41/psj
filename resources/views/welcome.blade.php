@@ -1,114 +1,350 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    @include('layouts_backend._head_backend')
-    @include('layouts_backend._css_backend')
-</head>
-<body>
-<div class="preloader">
-    <div class="lds-ripple">
-        <div class="lds-pos"></div>
-        <div class="lds-pos"></div>
-    </div>
-</div>
-<div id="main-wrapper">
-<div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url({{ asset('assets/images/big/auth-bg.jpg') }}) no-repeat center center;">
-    <div class="auth-box">
-        <div id="loginform">
-            <div class="logo">
-                <span class="db"><img src="{{ asset('assets/images/logo-icon.png') }}" alt="logo" /></span>
-                <h5 class="font-medium m-b-20">Sign In to Admin</h5>
-            </div>
-            <!-- Form -->
-            <div class="row">
-                <div class="col-12">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
+@extends('layouts_frontend._main_frontend')
+
+@section('extra_style')
+@endsection
+
+@section('content')
+<section class="home">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 col-sm-12 col-xs-12">
+                        <div class="headline">
+                            <div class="nav" id="headline-nav">
+                                <a class="left carousel-control" role="button" data-slide="prev">
+                                    <span class="ion-ios-arrow-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" role="button" data-slide="next">
+                                    <span class="ion-ios-arrow-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                             </div>
-
-                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }} form-control-lg" name="email" placeholder="E-mail" value="{{ old('email') }}" autofocus aria-label="Username" aria-describedby="basic-addon1">
-
-                            @if ($errors->has('email'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon2"><i class="ti-pencil"></i></span>
-                            </div>
-                            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }} form-control-lg" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <div class="custom-control custom-checkbox">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                    {{-- <input type="checkbox" class="custom-control-input" id="customCheck1"> --}}
-                                    <label class="custom-control-label" for="remember">Remember me</label>
-                                    <a href="javascript:void(0)" id="to-recover" class="text-dark float-right"><i class="fa fa-lock m-r-5"></i> Forgot pwd?</a>
+                            <div class="owl-carousel owl-theme" id="headline">                          
+                                <div class="item">
+                                    <a href="#"><div class="badge">Tip!</div> Vestibulum ante ipsum primis in faucibus orci</a>
+                                </div>
+                                <div class="item">
+                                    <a href="#">Ut rutrum sodales mauris ut suscipit</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group text-center">
-                            <div class="col-xs-12 p-b-20">
-                                <button class="btn btn-block btn-lg btn-info" type="submit">Log In</button>
+                        <div class="owl-carousel owl-theme slide" id="featured">
+                            <div class="item">
+                                <article class="featured">
+                                    <div class="overlay"></div>
+                                    <figure>
+                                        <img src="{{ asset('assets/images/news/img04.jpg') }}" alt="Sample Article">
+                                    </figure>
+                                    <div class="details">
+                                        <div class="category"><a href="category.html">Computer</a></div>
+                                        <h1><a href="single.html">Phasellus iaculis quam sed est elementum vel ornare ligula venenatis</a></h1>
+                                        <div class="time">December 26, 2016</div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="item">
+                                <article class="featured">
+                                    <div class="overlay"></div>
+                                    <figure>
+                                        <img src="{{ asset('assets/images/news/img14.jpg') }}" alt="Sample Article">
+                                    </figure>
+                                    <div class="details">
+                                        <div class="category"><a href="category.html">Travel</a></div>
+                                        <h1><a href="single.html">Class aptent taciti sociosqu ad litora torquent per conubia nostra</a></h1>
+                                        <div class="time">December 10, 2016</div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="item">
+                                <article class="featured">
+                                    <div class="overlay"></div>
+                                    <figure>
+                                        <img src="{{ asset('assets/images/news/img13.jpg') }}" alt="Sample Article">
+                                    </figure>
+                                    <div class="details">
+                                        <div class="category"><a href="category.html">International</a></div>
+                                        <h1><a href="single.html">Maecenas accumsan tortor ut velit pharetra mollis</a></h1>
+                                        <div class="time">October 12, 2016</div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="item">
+                                <article class="featured">
+                                    <div class="overlay"></div>
+                                    <figure>
+                                        <img src="{{ asset('assets/images/news/img05.jpg') }}" alt="Sample Article">
+                                    </figure>
+                                    <div class="details">
+                                        <div class="category"><a href="category.html">Lifestyle</a></div>
+                                        <h1><a href="single.html">Mauris elementum libero at pharetra auctor Fusce ullamcorper elit</a></h1>
+                                        <div class="time">November 27, 2016</div>
+                                    </div>
+                                </article>
                             </div>
                         </div>
-                       {{--  <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
-                                <div class="social">
-                                    <a href="javascript:void(0)" class="btn  btn-facebook" data-toggle="tooltip" title="" data-original-title="Login with Facebook"> <i aria-hidden="true" class="fab  fa-facebook"></i> </a>
-                                    <a href="javascript:void(0)" class="btn btn-googleplus" data-toggle="tooltip" title="" data-original-title="Login with Google"> <i aria-hidden="true" class="fab  fa-google-plus"></i> </a>
+                        <div class="line">
+                            <div>POPULAR</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    @foreach ($data_popular as $element)
+                                    <article class="article col-md-3">
+                                        <div class="inner">
+                                            <figure>
+                                                <a href="single.html">
+                                                    <img src="{{ asset('storage/app/'.$element->dn_cover ) }}" alt="Sample Article">
+                                                </a>
+                                            </figure>
+                                            <div class="padding">
+                                                <h6 style="font-size: 12px"><a href="{{ route('frontend_book',['id'=>str_replace(" ","-",$element->dn_title)]) }}">{{-- {{ substr(strip_tags($element->dn_title), 0,25) }}{{ strlen($element->dn_title) > 2 ?  ".." : "" }} --}}<input type="text" readonly="" style="width: 100%;border: none;cursor: pointer;" value="{{ $element->dn_title }}" name=""></a></h6>
+                                                <footer>
+                                                    <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
+                                                    <a class="btn btn-primary more" href="{{ route('frontend_book',['id'=>str_replace(" ","-",$element->dn_title)]) }}">
+                                                        <div>More</div>
+                                                        <div><i class="ion-ios-arrow-thin-right"></i></div>
+                                                    </a>
+                                                </footer>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    @endforeach
                                 </div>
                             </div>
-                        </div> --}}
-                        <div class="form-group m-b-0 m-t-10">
-                            <div class="col-sm-12 text-center">
-                                Don't have an account? <a href="authentication-register1.html" class="text-info m-l-5"><b>Sign Up</b></a>
-                            </div>
                         </div>
-                    </form>
+                        <div class="line">
+                            <div>LIKE</div>
+                        </div>
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    @foreach ($data_like as $element)
+                                    <article class="article col-md-3">
+                                        <div class="inner">
+                                            <figure>
+                                                <a href="single.html">
+                                                    <img src="{{ asset('storage/app/'.$element->dn_cover ) }}" alt="Sample Article">
+                                                </a>
+                                            </figure>
+                                            <div class="padding">
+                                                <h6 style="font-size: 12px"><a href="{{ route('frontend_book',['id'=>str_replace(" ","-",$element->dn_title)]) }}">{{-- {{ substr(strip_tags($element->dn_title), 0,25) }}{{ strlen($element->dn_title) > 2 ?  ".." : "" }} --}}<input type="text" style="width: 100%;border: none;cursor: pointer;" value="{{ $element->dn_title }}" name=""></a></h6>
+                                                <footer>
+                                                    <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
+                                                    <a class="btn btn-primary more" href="{{ route('frontend_book',['id'=>str_replace(" ","-",$element->dn_title)]) }}">
+                                                        <div>More</div>
+                                                        <div><i class="ion-ios-arrow-thin-right"></i></div>
+                                                    </a>
+                                                </footer>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    @endforeach
+                                </div>
+                            </div>
+                        <div class="line">
+                            <div>LATEST</div>
+                        </div>
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    @foreach ($data_latest as $element)
+                                    <article class="article col-md-3">
+                                        <div class="inner">
+                                            <figure>
+                                                <a href="single.html">
+                                                    <img src="{{ asset('storage/app/'.$element->dn_cover ) }}" alt="Sample Article">
+                                                </a>
+                                            </figure>
+                                            <div class="padding">
+                                                <h6 style="font-size: 12px"><a href="{{ route('frontend_book',['id'=>str_replace(" ","-",$element->dn_title)]) }}">{{-- {{ substr(strip_tags($element->dn_title), 0,25) }}{{ strlen($element->dn_title) > 2 ?  ".." : "" }} --}}<input type="text" style="width: 100%;border: none;cursor: pointer;" value="{{ $element->dn_title }}" name=""></a></h6>
+                                                <footer>
+                                                    <a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
+                                                    <a class="btn btn-primary more" href="{{ route('frontend_book',['id'=>str_replace(" ","-",$element->dn_title)]) }}">
+                                                        <div>More</div>
+                                                        <div><i class="ion-ios-arrow-thin-right"></i></div>
+                                                    </a>
+                                                </footer>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    @endforeach
+                                </div>
+                            </div>
+                        
+                    </div>
+                    
                 </div>
             </div>
-        </div>
-        <div id="recoverform">
-            <div class="logo">
-                <span class="db"><img src="{{ asset('assets/images/logo-icon.png') }}" alt="logo" /></span>
-                <h5 class="font-medium m-b-20">Recover Password</h5>
-                <span>Enter your Email and instructions will be sent to you!</span>
-            </div>
-            <div class="row m-t-20">
-                <!-- Form -->
-                <form class="col-12" action="index.html">
-                    <!-- email -->
-                    <div class="form-group row">
-                        <div class="col-12">
-                            <input class="form-control form-control-lg" type="email" required="" placeholder="Username">
-                        </div>
+            <div class="col-xs-6 col-md-3 sidebar" id="sidebar">
+                        <div class="sidebar-title for-tablet">Sidebar</div>
+                        
+                        <aside>
+                            <ul class="nav nav-tabs nav-justified" role="tablist">
+                                <li class="active">
+                                    <a href="#recomended" aria-controls="recomended" role="tab" data-toggle="tab">
+                                        <i class="ion-android-star-outline"></i> Recomended
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">
+                                        <i class="ion-ios-chatboxes-outline"></i> Comments
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="recomended">
+                                    <article class="article-fw">
+                                        <div class="inner">
+                                            <figure>
+                                                <a href="single.html">
+                                                    <img src="{{ asset('assets/images/news/img16.jpg') }}" alt="Sample Article">
+                                                </a>
+                                            </figure>
+                                            <div class="details">
+                                                <div class="detail">
+                                                    <div class="time">December 31, 2016</div>
+                                                    <div class="category"><a href="category.html">Sport</a></div>
+                                                </div>
+                                                <h1><a href="single.html">Donec congue turpis vitae mauris</a></h1>
+                                                <p>
+                                                    Donec congue turpis vitae mauris condimentum luctus. Ut dictum neque at egestas convallis. 
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <div class="line"></div>
+                                    <article class="article-mini">
+                                        <div class="inner">
+                                            <figure>
+                                                <a href="single.html">
+                                                    <img src="{{ asset('assets/images/news/img05.jpg') }}" alt="Sample Article">
+                                                </a>
+                                            </figure>
+                                            <div class="padding">
+                                                <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
+                                                <div class="detail">
+                                                    <div class="category"><a href="category.html">Lifestyle</a></div>
+                                                    <div class="time">December 22, 2016</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="article-mini">
+                                        <div class="inner">
+                                            <figure>
+                                                <a href="single.html">
+                                                    <img src="{{ asset('assets/images/news/img02.jpg') }}" alt="Sample Article">
+                                                </a>
+                                            </figure>
+                                            <div class="padding">
+                                                <h1><a href="single.html">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
+                                                <div class="detail">
+                                                    <div class="category"><a href="category.html">Travel</a></div>
+                                                    <div class="time">December 21, 2016</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="article-mini">
+                                        <div class="inner">
+                                            <figure>
+                                                <a href="single.html">
+                                                    <img src="{{ asset('assets/images/news/img10.jpg') }}" alt="Sample Article">
+                                                </a>
+                                            </figure>
+                                            <div class="padding">
+                                                <h1><a href="single.html">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
+                                                <div class="detail">
+                                                    <div class="category"><a href="category.html">Healthy</a></div>
+                                                    <div class="time">December 20, 2016</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="tab-pane comments" id="comments">
+                                    <div class="comment-list sm">
+                                        <div class="item">
+                                            <div class="user">                                
+                                                <figure>
+                                                    <img src="{{ asset('assets/images/img01.jpg"') }} alt="User Picture">
+                                                </figure>
+                                                <div class="details">
+                                                    <h5 class="name">Mark Otto</h5>
+                                                    <div class="time">24 Hours</div>
+                                                    <div class="description">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="user">                                
+                                                <figure>
+                                                    <img src="{{ asset('assets/images/img01.jpg"') }} alt="User Picture">
+                                                </figure>
+                                                <div class="details">
+                                                    <h5 class="name">Mark Otto</h5>
+                                                    <div class="time">24 Hours</div>
+                                                    <div class="description">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="user">                                
+                                                <figure>
+                                                    <img src="{{ asset('assets/images/img01.jpg"') }} alt="User Picture">
+                                                </figure>
+                                                <div class="details">
+                                                    <h5 class="name">Mark Otto</h5>
+                                                    <div class="time">24 Hours</div>
+                                                    <div class="description">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+                        <aside>
+                            <div class="aside-body">
+                                <form class="newsletter">
+                                    <div class="icon">
+                                        <i class="ion-ios-email-outline"></i>
+                                        <h1>Newsletter</h1>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="email" class="form-control email" placeholder="Your mail">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-primary"><i class="ion-paper-airplane"></i></button>
+                                        </div>
+                                    </div>
+                                    <p>By subscribing you will receive new articles in your email.</p>
+                                </form>
+                            </div>
+                        </aside>
+                        
                     </div>
-                    <!-- pwd -->
-                    <div class="row m-t-20">
-                        <div class="col-12">
-                            <button class="btn btn-block btn-lg btn-danger" type="submit" name="action">Reset</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
-</div>
-</div>
-    @include('layouts_backend._scripts_backend')
-</body>
-</html>
+
+        </section>
+@endsection
+
+@section('extra_scripts')
+
+
+<script type="text/javascript">
+    
+    function link(argument) {
+        window.location.assign('www.esensicreative.com');
+    }
+
+</script>
+
+
+@endsection

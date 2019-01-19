@@ -135,7 +135,7 @@
                             <div class="message-center chat-scroll">
                                 <a href="javascript:void(0)" class="message-item" id='chat_user_1' data-user-id='1'>
                                     <span class="user-img">
-                                        <img src="{{ asset('assets/images/users/1.jpg') }}" alt="user" class="rounded-circle">
+                                        <img src="{{ asset('assets_backend/images/users/1.jpg') }}" alt="user" class="rounded-circle">
                                         <span class="profile-status online pull-right"></span>
                                     </span>
                                     <div class="mail-contnet">
@@ -147,7 +147,7 @@
                                 <!-- Message -->
                                 <a href="javascript:void(0)" class="message-item" id='chat_user_2' data-user-id='2'>
                                     <span class="user-img">
-                                        <img src="{{ asset('assets/images/users/2.jpg') }}" alt="user" class="rounded-circle">
+                                        <img src="{{ asset('assets_backend/images/users/2.jpg') }}" alt="user" class="rounded-circle">
                                         <span class="profile-status busy pull-right"></span>
                                     </span>
                                     <div class="mail-contnet">
@@ -159,7 +159,7 @@
                                 <!-- Message -->
                                 <a href="javascript:void(0)" class="message-item" id='chat_user_3' data-user-id='3'>
                                     <span class="user-img">
-                                        <img src="{{ asset('assets/images/users/3.jpg') }}" alt="user" class="rounded-circle">
+                                        <img src="{{ asset('assets_backend/images/users/3.jpg') }}" alt="user" class="rounded-circle">
                                         <span class="profile-status away pull-right"></span>
                                     </span>
                                     <div class="mail-contnet">
@@ -171,7 +171,7 @@
                                 <!-- Message -->
                                 <a href="javascript:void(0)" class="message-item" id='chat_user_4' data-user-id='4'>
                                     <span class="user-img">
-                                        <img src="{{ asset('assets/images/users/4.jpg') }}" alt="user" class="rounded-circle">
+                                        <img src="{{ asset('assets_backend/images/users/4.jpg') }}" alt="user" class="rounded-circle">
                                         <span class="profile-status offline pull-right"></span>
                                     </span>
                                     <div class="mail-contnet">
@@ -184,7 +184,7 @@
                                 <!-- Message -->
                                 <a href="javascript:void(0)" class="message-item" id='chat_user_5' data-user-id='5'>
                                     <span class="user-img">
-                                        <img src="{{ asset('assets/images/users/5.jpg') }}" alt="user" class="rounded-circle">
+                                        <img src="{{ asset('assets_backend/images/users/5.jpg') }}" alt="user" class="rounded-circle">
                                         <span class="profile-status offline pull-right"></span>
                                     </span>
                                     <div class="mail-contnet">
@@ -197,7 +197,7 @@
                                 <!-- Message -->
                                 <a href="javascript:void(0)" class="message-item" id='chat_user_6' data-user-id='6'>
                                     <span class="user-img">
-                                        <img src="{{ asset('assets/images/users/6.jpg') }}" alt="user" class="rounded-circle">
+                                        <img src="{{ asset('assets_backend/images/users/6.jpg') }}" alt="user" class="rounded-circle">
                                         <span class="profile-status offline pull-right"></span>
                                     </span>
                                     <div class="mail-contnet">
@@ -210,7 +210,7 @@
                                 <!-- Message -->
                                 <a href="javascript:void(0)" class="message-item" id='chat_user_7' data-user-id='7'>
                                     <span class="user-img">
-                                        <img src="{{ asset('assets/images/users/7.jpg') }}" alt="user" class="rounded-circle">
+                                        <img src="{{ asset('assets_backend/images/users/7.jpg') }}" alt="user" class="rounded-circle">
                                         <span class="profile-status offline pull-right"></span>
                                     </span>
                                     <div class="mail-contnet">
@@ -223,7 +223,7 @@
                                 <!-- Message -->
                                 <a href="javascript:void(0)" class="message-item" id='chat_user_8' data-user-id='8'>
                                     <span class="user-img">
-                                        <img src="{{ asset('assets/images/users/8.jpg') }}" alt="user" class="rounded-circle">
+                                        <img src="{{ asset('assets_backend/images/users/8.jpg') }}" alt="user" class="rounded-circle">
                                         <span class="profile-status offline pull-right"></span>
                                     </span>
                                     <div class="mail-contnet">
@@ -264,7 +264,7 @@
                         </div>
                         <div class="sl-item">
                             <div class="sl-left">
-                                <img class="rounded-circle" alt="user" src="{{ asset('assets/images/users/2.jpg') }}"> </div>
+                                <img class="rounded-circle" alt="user" src="{{ asset('assets_backend/images/users/2.jpg') }}"> </div>
                             <div class="sl-right">
                                 <div class="font-medium">Go to the Doctor
                                     <span class="sl-date">5 minutes ago</span>
@@ -274,7 +274,7 @@
                         </div>
                         <div class="sl-item">
                             <div class="sl-left">
-                                <img class="rounded-circle" alt="user" src="{{ asset('assets/images/users/1.jpg') }}"> </div>
+                                <img class="rounded-circle" alt="user" src="{{ asset('assets_backend/images/users/1.jpg') }}"> </div>
                             <div class="sl-right">
                                 <div>
                                     <a href="javascript:void(0)">Stephen</a>
@@ -305,7 +305,7 @@
                         </div>
                         <div class="sl-item">
                             <div class="sl-left">
-                                <img class="rounded-circle" alt="user" src="{{ asset('assets/images/users/4.jpg') }}"> </div>
+                                <img class="rounded-circle" alt="user" src="{{ asset('assets_backend/images/users/4.jpg') }}"> </div>
                             <div class="sl-right">
                                 <div class="font-medium">Go to the Doctor
                                     <span class="sl-date">5 minutes ago</span>
@@ -315,7 +315,7 @@
                         </div>
                         <div class="sl-item">
                             <div class="sl-left">
-                                <img class="rounded-circle" alt="user" src="{{ asset('assets/images/users/6.jpg') }}"> </div>
+                                <img class="rounded-circle" alt="user" src="{{ asset('assets_backend/images/users/6.jpg') }}"> </div>
                             <div class="sl-right">
                                 <div>
                                     <a href="javascript:void(0)">Stephen</a>
