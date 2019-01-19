@@ -123,7 +123,8 @@
                                 message: 'Data Berhasil Disimpan!',
                             });
 
-                        location.href = baseUrl+'/write'+'/write_chapter/'+id
+                        // location.href = baseUrl+'/write'+'/write_chapter/'+id
+                        location.reload();
                         }else if (data.status == 'ada') {
                             iziToast.warning({
                                 icon: 'fa fa-save',

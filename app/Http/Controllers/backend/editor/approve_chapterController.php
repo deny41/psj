@@ -19,7 +19,12 @@ class approve_chapterController extends Controller
     						->select('dnch_id','dnch_title','dn_title','m_username','dnch_created_at','m_role')
     						->join('d_novel','dn_id','dnch_ref_id')
     						->join('d_mem','m_id','dnch_created_by')
-    						->where('dnch_status',2)
+                            ->where(function ($query) {
+                                $query->where('dnch_status', '=', 1)
+                                      ->orWhere('dnch_status', '=', 2);
+                            })
+                            // ->where('dnch_status',2)
+    						->where('dn_type_novel',1)
     						->get();
 
     	return view('backend_view.approve_chapter.index',compact('data'));

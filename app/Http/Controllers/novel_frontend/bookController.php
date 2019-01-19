@@ -21,7 +21,7 @@ class bookController extends Controller
         $novel = DB::table('d_novel')
                     ->where('dn_created_by','=',$code->dn_created_by)
                     ->where('dn_title','=',$title)
-                    ->where('dn_status',1)
+                    // ->where('dn_status',1)
                     ->get();
 
         $book = DB::table('d_novel')
@@ -33,10 +33,16 @@ class bookController extends Controller
         
         $total_book = count($q_total_book);
 
-        $chapter = DB::table('d_novel_chapter')
+        if ($code->dn_type_novel == 1) {
+            $chapter = DB::table('d_novel_chapter')
                     ->where('dnch_ref_id',$code->dn_id)
                     ->where('dnch_status',1)
                     ->get();
+        }else{
+            $chapter = DB::table('d_novel_chapter')
+                    ->where('dnch_ref_id',$code->dn_id)
+                    ->get();
+        }
 
         $novel_rate = DB::table('d_novel_rate')
                     ->join('d_mem','m_id','dr_rated_by')

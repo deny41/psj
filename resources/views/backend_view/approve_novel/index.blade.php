@@ -75,8 +75,12 @@
                                             
                                         </td>
                                         <td>{{ date('F ,d Y',strtotime($element->dn_created_at)) }}</td>
-                                        <td width="10%">
-                                            <a class="btn waves-effect waves-light btn-sm btn-warning" href="{{ route('approve_novel_edit',['id'=>$element->dn_id]) }}"><i class="fas fa-chevron-circle-right"></i></a>
+                                        <td width="13%">
+                                            <button type="button" class="btn waves-effect waves-light btn-sm btn-success official" value="{{ $element->dn_id }}"><i class="fas fa-check-circle"></i></button>
+                                            @if ($element->dn_type_novel == 1)
+                                                <a class="btn waves-effect waves-light btn-sm btn-warning" href="{{ route('approve_novel_edit',['id'=>$element->dn_id]) }}"><i class="fas fa-chevron-circle-right"></i></a>
+                                            {{-- @else --}}
+                                            @endif
                                             <button type="button" class="btn waves-effect waves-light btn-sm btn-danger delete" value="{{ $element->dn_id }}"><i class="fas fa-times-circle"></i></button>
                                         </td>
                                     </tr>
@@ -156,8 +160,65 @@
                     console.info('closedBy: ' + closedBy); // tells if it was closed by 'drag' or 'button'
                 }
             });
-        
-    });
+     });
+
+
+    $('.official').on('click', function () {
+
+       var this_val = $(this).val();
+       iziToast.question({
+                theme: 'dark',
+                overlay: true,
+                displayMode: 'once',
+                id: 'question',
+                zindex: 999,
+                backgroundColor: '#1f1f22',
+                icon: 'fa fa-info-circle',
+                title: 'Are you Sure! Make This Story Became Official',
+                message: '',
+                position: 'center', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                progressBarColor: 'rgb(0, 255, 184)',
+                buttons: [
+                    ['<button style="background-color:green;"> Approve </button>', function (instance, toast) {
+
+                        $.ajax({
+                            url  : baseUrl+'/editor/approve_novel/official/'+this_val,
+                            type :'get',
+                            success:function(data){
+                                if (data.status == 'sukses') {
+                                    iziToast.success({position: 'topRight',message: 'Successfully Deleted!'});
+                                    // location.href = baseUrl+'/write'+'/write_chapter/'+id
+                                    location.reload();
+                                }else{
+                                    iziToast.error({position: 'topRight',message: 'Error Check your data! '});
+                                }
+                            },
+                            error:function(data){
+
+                            }
+
+                        })
+
+                        instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                    }, true], // true to focus
+                    ['<button> Cancel </button>', function (instance, toast) {
+                        instance.hide({
+                            transitionOut: 'fadeOutUp',
+                            onClosing: function(instance, toast, closedBy){
+                                console.info('closedBy: ' + closedBy); // The return will be: 'closedBy: buttonName'
+                            }
+                        }, toast, 'buttonName');
+                        instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                    }]
+                ],
+                onOpening: function(instance, toast){
+                    console.info('callback abriu!');
+                },
+                onClosing: function(instance, toast, closedBy){
+                    console.info('closedBy: ' + closedBy); // tells if it was closed by 'drag' or 'button'
+                }
+            });
+     });
 
     </script>
 

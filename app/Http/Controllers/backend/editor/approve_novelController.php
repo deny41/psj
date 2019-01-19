@@ -16,7 +16,7 @@ class approve_novelController extends Controller
     {
  
     	$data = DB::table('d_novel')
-    						->select('dn_title','m_username','dn_created_at','m_role','dn_id')
+    						->select('dn_title','m_username','dn_created_at','m_role','dn_id','dn_type_novel')
     						->join('d_mem','m_id','dn_created_by')
     						->where('dn_status',2)
     						->get();
@@ -48,5 +48,15 @@ class approve_novelController extends Controller
     				]);
     	return Response()->json(['status'=>'sukses']);
 
+    }
+    public function official(Request $request,$id)
+    {
+        // dd($id);
+        $update = DB::table('d_novel')->where('dn_id',$id)
+                        ->update([
+                            'dn_type_novel'=>1
+                        ]);
+
+        return Response()->json(['status'=>'sukses']);
     }
 }

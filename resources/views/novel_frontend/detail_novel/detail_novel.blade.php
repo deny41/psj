@@ -454,8 +454,8 @@
     function reply_data(argument) {
         $.ajax({
             type: "get",
-            url:'{{ route('subscribe_novel') }}',
-            data: '&id='+('{{ $book->dn_id }}')+'&message='+message+'&drdt_reply_by='+dr_rated_by+'&drdt_ref_rate_id='+argument,
+            url:'',
+            data: '&id='+('{{ $book->dn_id }}')+'&drdt_reply_by='+dr_rated_by+'&drdt_ref_rate_id='+argument,
             processData: false,
             contentType: false,
           success:function(data){

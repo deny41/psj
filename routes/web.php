@@ -24,6 +24,7 @@
    Route::get('/novel_rate_star', 'novel_frontend\bookController@novel_rate_star')->name('novel_rate_star');
    Route::get('/novel_rate_reply', 'novel_frontend\bookController@novel_rate_reply')->name('novel_rate_reply');
    Route::get('/chapter/{name}', 'novel_frontend\chapterController@chapter')->name('frontend_chapter');
+   Route::get('/subsibe/', 'novel_frontend\chapterController@chapter')->name('subsibe_novel');
    //BACKEND 
 
  // });
@@ -49,6 +50,7 @@ Auth::routes();
    Route::get('/editor/approve_novel/edit/{id}', 'backend\editor\approve_novelController@edit')->name('approve_novel_edit');
    Route::post('/editor/approve_novel/update', 'backend\editor\approve_novelController@update')->name('approve_novel_update');
    Route::get('/editor/approve_novel/delete/{id}', 'backend\editor\approve_novelController@delete')->name('approve_novel_delete');
+   Route::get('/editor/approve_novel/official/{id}', 'backend\editor\approve_novelController@official')->name('approve_novel_official');
 
    Route::get('/editor/approve_chapter', 'backend\editor\approve_chapterController@index')->name('approve_chapter');
    Route::get('/editor/approve_chapter/edit/{id}', 'backend\editor\approve_chapterController@edit')->name('approve_chapter_edit');
